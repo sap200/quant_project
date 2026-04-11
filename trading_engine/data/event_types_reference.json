@@ -1,0 +1,29 @@
+{
+  "event_types": [
+    {
+      "name": "MarketDataUpdate",
+      "description": "Real-time market data update",
+      "fields": ["symbol", "bid", "ask", "last", "volume", "timestamp"]
+    },
+    {
+      "name": "OrderSubmitted",
+      "description": "New order submitted to the system",
+      "fields": ["order_id", "symbol", "side", "quantity", "price", "order_type", "timestamp"]
+    },
+    {
+      "name": "OrderFilled",
+      "description": "Order executed at market",
+      "fields": ["order_id", "fill_price", "fill_quantity", "timestamp"]
+    },
+    {
+      "name": "OrderCancelled",
+      "description": "Order cancelled by user or system",
+      "fields": ["order_id", "reason", "timestamp"]
+    },
+    {
+      "name": "PositionUpdate",
+      "description": "Position changed due to fill",
+      "fields": ["symbol", "quantity", "avg_price", "unrealized_pnl", "timestamp"]
+    }
+  ]
+}

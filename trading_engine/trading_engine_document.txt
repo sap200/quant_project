@@ -1,0 +1,59 @@
+We will build a trading engine in python. 
+- Build a simple event system
+- Build order book
+- Build position tracker
+- Build risk checks
+- Feed market data
+- Build backtesting module
+- Build dashboard
+
+- Building a simple event system?
+Q. Why do we need it?
+Ans: We want different parts of system to communicate. So we will create a simple event based system.
+A message board where message gets posted and other parts listen to it. 
+Entire trading engine's backbone. 
+
+- Building an order book.
+An order book is a electronic list of buy and sell orders waiting to be matched. 
+It's like 2 sorted list 
+ - one for buyer (sorted from highest to lowest - buyer wants best deal)
+ - one for seller (soller from lowest price to highest - seller wants the highest price)
+ 
+when highest buy price meets or exceeds the lowest sell price, a trade happen
+
+- Building Position Tracker and profit/Loss
+
+When you buy or sell shares, you need to keep track of your position.
+whether you are making money or losing it. 
+A position tracks: how many shares you hold.
+What you paid on average.
+Your profit and Loss 
+
+- Add Risk checks
+
+Before any trade goes through , you need safety checks to prevent loses
+Risk check are like guard rails, stop you from buying too much of one stock.
+having too much money at risk., or losing too much in single day
+
+- Building Execution Engine
+ Heart of trading engine 
+ everythign is tied together.
+ Execution engine receives order
+ run risk check
+ add them to order book
+ match buyer with sellers
+ update positions
+ 
+ - Add market feed
+ - Ideally Trading engine needs price data to work with
+ In real world this comes through live feeds
+ For our system we will read price data from a CSV file and simulate a live feed by publishing
+ price updates one at a time through our event system.
+ 
+ - Building a backtesterWe
+     Backtester lets you test your trading strategy on historical data 
+     to see how your strategy performs 
+     Build a framework that replays old price data, runs a strategy, 
+     decides when to buy/sell. 
+     Simulate the trades and report the results.
+     Quants do this before risking real money. 

@@ -1,0 +1,19 @@
+will calculate accrued interest that built up till the last payment date
+
+cashflow projection engine, generate all future payment for an instrument
+For a bond that means coupon payment on each payment date + the face value at maturity. 
+
+For loan it means interest + principal payment that decreases over time as loan amortises. 
+
+A dollar today is worth more than the dollar next year
+this is time value of money. 
+PV (present value) tells you what a future payment is worth today. 
+YTM is the discount rate that makes the present value of all cashflow equal to bond's market price
+
+scenario analysis:
+What ahppens to my bond's value if interest rate changes?
+since bond price move opposite to rates.
+
+Critical for risk management
+
+A tool that tests multiple rate scenarios, and reports the impact
