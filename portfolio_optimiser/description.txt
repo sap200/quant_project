@@ -1,0 +1,20 @@
+ - We will build a portfolio optimization tool.
+ - Given a risk level we want to find best mix of stocks.
+ - Load price data, calculate returns and correlations
+ - Plot Efficient Frontier
+ - Add constraints
+ - Implement multiple strategies
+ - Backtest performance
+ - Generate risk reports.
+ 
+ a) Load price data and calculate returns
+ 
+ i) How to load historical data
+ ii) Calculate dailty return, 
+ iii) compute key statistics (Expected return, volatility, correlations)
+ 
+ - Real portfolio has constraints
+ - like you can't hold more than 30% of each stock'
+ - YOu must hold 5% of each stock
+ - certain sector cannot exceed 40%
+ - We will add these constraints in our optimizer
