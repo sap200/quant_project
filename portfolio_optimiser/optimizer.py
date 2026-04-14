@@ -355,6 +355,34 @@ def plot_frontier_with_strategies(frontier_vols_u, frontier_returns_u, stock_vol
     plt.tight_layout()
     plt.show()
 
+# optimizer function    
+SHARPE='sharpe'
+VARIANCE='variance'
+EQ_WEIGHT='equal_weight'
+RISK_PARITY = 'risk_parity'
+
+def optimizer_func_for_backtest(prices_df, name=SHARPE, risk_free_rate=0.0):
+    daily_returns = prices_df.pct_change().dropna()
+    expected_returns = (daily_returns.mean() * 252)
+    cov_matrix = (daily_returns.cov() * 252)
+    r = None
+    if name == SHARPE:
+        r = max_sharpe_ratio_portfolio(expected_returns, cov_matrix, risk_free_rate=risk_free_rate)
+    elif name == VARIANCE:
+        r = min_variance_portfolio(expected_returns, cov_matrix)
+    elif name == EQ_WEIGHT:
+        r = equal_weight_portfolio(len(expected_returns))
+        return r
+    elif name == RISK_PARITY:
+        r = risk_parity_portfolio(cov_matrix)
+    
+    if r.success:
+        return r.x
+    else:
+        return None
+
+    
+    
         
         
             

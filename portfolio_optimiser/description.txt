@@ -18,3 +18,10 @@
  - YOu must hold 5% of each stock
  - certain sector cannot exceed 40%
  - We will add these constraints in our optimizer
+ 
+ Backtesting How it would perform on historical dataset. 
+ 
+ replay the past month by month 
+ rebalance optimal weights
+ deduct txn cost
+ track portfolio values over time. 

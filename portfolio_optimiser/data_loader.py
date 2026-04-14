@@ -3,14 +3,14 @@ import os
 import pandas as pd
 import numpy as np
 
-def download_data(folder_path='./data'):
+def download_data(folder_path='./data', period='1y', file_name='stocks_1y.csv'):
     # download data
     tickers = ["AAPL","MSFT","GOOGL","TSLA","NVDA", 'JPM']
-    data = yf.download(tickers, period='1y')
+    data = yf.download(tickers, period=period)
     # create folder
     os.makedirs(folder_path, exist_ok=True)
     # save data
-    file_path = os.path.join(folder_path, 'stocks_1y.csv')
+    file_path = os.path.join(folder_path, file_name)
     data.to_csv(file_path)
     
     print(f'saved to {file_path}')
