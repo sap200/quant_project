@@ -1,0 +1,67 @@
+The plan (Project)
+-------
+
+data collection
+a) Implement Genetic Algorithm for alpha enhancement.
+Task 1 a) Implement Genetic Algorithm for alpha enhancement.
+
+
+
+Sub tasks,
+
+a) decide and first code alphas that are required
+
+b) code the genetic algorithm
+
+c) input alphas and data in genetic algo, we should get alpha
+b) Input 5 apha 101s get 5 ws_alphas
+c) Calculate corelation between the newly generated alphas, 101 alphas 
+
+----
+d) Calculate information coefficient (IC), RankIC, and ICIR for alpha 101, and ws alphas
+e) Synthesis this alpha using linear or non linear model. 
+f) Backtest on real data (AAPL, GOOGLE,...) something (have a simple backtesting strategy as mentioned). we will show that later.
+g) Plot the returns by alpha 101, and ws_alpha
+
+GP Engine
+
+gp_engine/
+│
+├── node.py
+├── operators.py
+├── evaluator.py
+├── individual.py
+├── population.py
+│
+├── genetic/
+│   ├── mutation.py
+│   ├── crossover.py
+│   ├── selection.py
+│
+└── engine.py
+
+
+The investment strategy we have built is best described as a **Tactical Machine Learning Overlay** (specifically a *Long-Only Positive Expectation Strategy*). 
+
+In the quant world, this is a sophisticated version of "Market Timing" that uses machine learning to decide when to be "In" (Long) or "Out" (Cash).
+
+### The Investment Strategy in Bullet Points
+
+* **Long-Only Filter:** We only take "Long" positions (buying to sell higher). We never "Short" (betting against) the market.
+* **Positive Expectation Entry:** The strategy follows a strict rule: **"Only buy if the model predicts a profit."** If the forecasted return for a stock is $0$ or negative, we treat that stock as "toxic" for that window and ignore it.
+* **Tactical Asset Allocation (TAA):** Unlike a "Buy & Hold" strategy that stays in the market forever, this is *Tactical*. It shifts between being 100% invested (Aggressive) and 100% in Cash (Defensive) based on the model's confidence.
+* **Cash as a Safe Haven:** When the market looks "bearish" (the model predicts negative returns for all 5 stocks), the strategy moves your entire portfolio into **Cash**. This acts as a shield to prevent major losses during crashes.
+* **Equal-Weight Distribution:** To manage risk, we don't put more money into one stock just because the model says it might return more. We split the available cash **equally** among all stocks that passed the "Positive" filter. This prevents one "bad call" from a single stock from ruining the whole portfolio.
+* **Horizon-Based Rebalancing:** The strategy rebalances according to your model's prediction window (e.g., every 5 days). It "cleans" the portfolio and resets positions to align with the freshest data available.
+
+---
+
+### Comparison of the 3 Portfolios in your Chart
+
+| Strategy | Logic | Strengths |
+| :--- | :--- | :--- |
+| **Seed Alphas** | Uses "Standard" financial formulas (like RSI or Moving Averages). | Stable and well-known; provides a "baseline" for smart investing. |
+| **GP Alphas** | Uses "Mined" formulas discovered by your Genetic Program. | Potentially finds "hidden" patterns that human traders miss; usually the most aggressive. |
+| **Benchmark** | Buys all 5 stocks on Day 1 and never sells. | Zero effort; wins in very strong, non-stop bull markets where trading fees eat profits. |
+
+**In short:** Your strategy is **"The Intelligent Filter."** It uses the GP and Seed Alphas as "Sensors" to detect if the next 5 days are worth the risk. If they aren't, it waits on the sidelines.
